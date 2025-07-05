@@ -1,0 +1,9 @@
+[project]
+name = "easy-http-proxy"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "proxy-py>=2.4.10",
+]
