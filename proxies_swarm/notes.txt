@@ -1,0 +1,15 @@
+docker run -it --privileged --sysctl net.ipv6.conf.all.disable_ipv6=0 --cap-add=NET_ADMIN --cap-add=NET_RAW --device /dev/net/tun -p 8899:8899 proxy-nordvpn
+docker run -it --privileged --sysctl net.ipv6.conf.all.disable_ipv6=0 --cap-add=NET_ADMIN --cap-add=NET_RAW --device /dev/net/tun -p 8900:8899 proxy-nordvpn
+docker run -it --privileged --sysctl net.ipv6.conf.all.disable_ipv6=0 --cap-add=NET_ADMIN --cap-add=NET_RAW --device /dev/net/tun -p 8901:8899 proxy-nordvpn
+docker run -it --privileged --sysctl net.ipv6.conf.all.disable_ipv6=0 --cap-add=NET_ADMIN --cap-add=NET_RAW --device /dev/net/tun -p 8901:8899 proxy-nordvpn
+
+# To build
+docker build -t proxy-nordvpn .
+# In the containers run this
+docker exec -it upbeat_lumiere /bin/bash
+/etc/init.d/nordvpn start
+nordvpn login
+# User has to get the url
+nordvpn login --callback "urlhere"
+nordvpn set lan-discovery on
+nordvpn connect al

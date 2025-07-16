@@ -1,0 +1,58 @@
+services:
+  proxy1:
+    image: proxy-nordvpn
+    privileged: true
+    ports:
+      - "8899:8899"
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: 0
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun
+    environment:
+      - NORDVPN_TOKEN=${NORDVPN_TOKEN_1}
+      - NORDVPN_COUNTRY=nl
+      - NORDVPN_TECHNOLOGY=NordLynx
+      - PROXY_PORT=8899
+    entrypoint: ["/start.sh"]
+
+  proxy2:
+    image: proxy-nordvpn
+    privileged: true
+    ports:
+      - "8900:8899"
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: 0
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun
+    environment:
+      - NORDVPN_TOKEN=${NORDVPN_TOKEN_2}
+      - NORDVPN_COUNTRY=nl
+      - NORDVPN_TECHNOLOGY=NordLynx
+      - PROXY_PORT=8899
+    entrypoint: ["/start.sh"]
+
+  proxy3:
+    image: proxy-nordvpn
+    privileged: true
+    ports:
+      - "8901:8899"
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: 0
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun
+    environment:
+      - NORDVPN_TOKEN=${NORDVPN_TOKEN_2}
+      - NORDVPN_COUNTRY=nl
+      - NORDVPN_TECHNOLOGY=NordLynx
+      - PROXY_PORT=8899
+    entrypoint: ["/start.sh"]
+
