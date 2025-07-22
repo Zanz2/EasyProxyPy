@@ -18,6 +18,8 @@ fi
 # Enable LAN discovery
 nordvpn set lan-discovery on
 
+#nordvpn set killswitch on
+
 # Connect to specified country/server
 if [ -n "$NORDVPN_COUNTRY" ]; then
   nordvpn connect "$NORDVPN_COUNTRY"
